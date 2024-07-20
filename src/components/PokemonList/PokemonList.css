@@ -10,9 +10,36 @@
     display: block;
     width: 70vh;
     padding: 15px;
-    margin: 50px auto 50px;
+    margin: 50px auto;
     font-size: 1rem;
     box-shadow: 3px 5px;
     border-radius: 5px;
     border: 2px solid black;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .search {
+        width: 90vw;
+        font-size: 0.9rem;
+        margin: 30px auto;
+    }
+
+    .list-pokemon {
+        margin: 50px auto;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .search {
+        width: 95vw;
+        font-size: 0.8rem;
+        padding: 10px;
+        margin: 20px auto;
+    }
+
+    .list-pokemon {
+        gap: 10px;
+    }
 }

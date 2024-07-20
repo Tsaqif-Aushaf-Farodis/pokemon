@@ -48,3 +48,16 @@
 .pokemon-card:hover .description {
     translate: 0 0;
 }
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .pokemon-card {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pokemon-card {
+        margin-bottom: 20px;
+    }
+}
