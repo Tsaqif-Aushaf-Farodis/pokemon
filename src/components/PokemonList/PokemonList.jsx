@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import pokemonJSON from "../../data/pokemon.json";
 import PokemonItem from "../PokemonItem/PokemonItem";
 import "./PokemonList.css";
@@ -6,7 +6,16 @@ import "./PokemonList.css";
 function PokemonList() {
     const [pokemons] = useState(pokemonJSON);
     const [filterPokemons, setFilterPokemons] = useState(pokemonJSON);
-    const [ownedPokemons, setOwnedPokemons] = useState([]);
+    const [ownedPokemons, setOwnedPokemons] = useState(() => {
+        // Ambil data dari localStorage saat komponen pertama kali dirender
+        const savedOwnedPokemons = localStorage.getItem('ownedPokemons');
+        return savedOwnedPokemons ? JSON.parse(savedOwnedPokemons) : [];
+    });
+
+    useEffect(() => {
+        // Simpan data ke localStorage setiap kali ownedPokemons berubah
+        localStorage.setItem('ownedPokemons', JSON.stringify(ownedPokemons));
+    }, [ownedPokemons]);
 
     const handleSearch = (e) => {
         let search = pokemons.filter((item) => {
