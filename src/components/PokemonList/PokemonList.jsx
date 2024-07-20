@@ -7,13 +7,11 @@ function PokemonList() {
     const [pokemons] = useState(pokemonJSON);
     const [filterPokemons, setFilterPokemons] = useState(pokemonJSON);
     const [ownedPokemons, setOwnedPokemons] = useState(() => {
-        // Ambil data dari localStorage saat komponen pertama kali dirender
         const savedOwnedPokemons = localStorage.getItem('ownedPokemons');
         return savedOwnedPokemons ? JSON.parse(savedOwnedPokemons) : [];
     });
 
     useEffect(() => {
-        // Simpan data ke localStorage setiap kali ownedPokemons berubah
         localStorage.setItem('ownedPokemons', JSON.stringify(ownedPokemons));
     }, [ownedPokemons]);
 
@@ -41,6 +39,12 @@ function PokemonList() {
                 className="search"
                 onChange={handleSearch}
             />
+
+            <div className="info">
+                <p>
+                    {`Jumlah Pokémon dimiliki: ${ownedPokemons.length} / ${pokemons.length}`}
+                </p>
+            </div>
 
             <div className="list-pokemon">
                 {filterPokemons.length === 0 ? (
