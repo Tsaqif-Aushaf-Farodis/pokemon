@@ -1,15 +1,16 @@
 import "./PokemonItem.css";
-
 import { colours } from "../../data/colours";
 
-function PokemonItem({ pokemon }) {
+function PokemonItem({ pokemon, isOwned, onToggleOwned }) {
     return (
         <div
-            className="pokemon-card"
+            className={`pokemon-card ${isOwned ? 'owned' : ''}`}
             style={{
                 backgroundColor: `${pokemon.color}`,
             }}
+            onClick={() => onToggleOwned(pokemon.id)}
         >
+            {isOwned && <div className="owned-label">Dimiliki</div>}
             <img src={pokemon.imageUrl} alt={pokemon.name} width={250} />
             <h1>{pokemon.name}</h1>
 

@@ -9,6 +9,15 @@
     overflow: hidden;
 }
 
+.pokemon-card:hover {
+    transform: scale(1.05);
+}
+
+.pokemon-card.owned {
+    border: 2px solid lightblue;
+    box-shadow: 5px 5px lightblue;
+}
+
 .pokemon-card>.types-container {
     display: flex;
     justify-content: center;
